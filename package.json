@@ -1,0 +1,53 @@
+{
+  "name": "@bwnl/error-boundary",
+  "version": "1.0.0",
+  "description": ":wave: Error Boundary Wrap",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SudoDotDog/BWNL-Error-Boundary.git"
+  },
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SudoDotDog/BWNL-Error-Boundary/issues"
+  },
+  "homepage": "https://github.com/SudoDotDog/BWNL-Error-Boundary#readme",
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {
+    "@sudoo/jss": "^1.2.1"
+  },
+  "devDependencies": {
+    "@sudoo/io": "^1.6.1",
+    "@sudoo/mock": "^1.2.0",
+    "@sudoo/react-force": "^1.6.1",
+    "@sudoo/react-force-dev": "^1.6.1",
+    "@sudoo/triforce": "^2.0.4",
+    "docz": "^2.1.1",
+    "docz-theme-default": "^1.2.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "reporter": [
+      "json",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "require": [
+      "./test/tshook.js"
+    ],
+    "sourceMap": true
+  }
+}
