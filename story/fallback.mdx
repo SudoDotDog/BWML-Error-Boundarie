@@ -3,14 +3,27 @@ name: Fallback
 ---
 
 import { FallbackErrorBoundary } from "../src/index";
+import { MockBugComponent } from "./mock"
 import { Playground } from 'docz'
 
 # Fallback Error Boundary
 
+## Fallback React Node
+
 <Playground>
-  <FallbackErrorBoundary>
-    <button onClick={() => {
-      throw new Error('Something going Wrong!');
-    }}>Trigger Error</button>
+  <FallbackErrorBoundary
+    fallback={<div>Caught!</div>}
+  >
+    <MockBugComponent />
+  </FallbackErrorBoundary>
+</Playground>
+
+## Fallback React Component
+
+<Playground>
+  <FallbackErrorBoundary
+    fallbackComponent={() => <div>Caught!</div>}
+  >
+    <MockBugComponent />
   </FallbackErrorBoundary>
 </Playground>
