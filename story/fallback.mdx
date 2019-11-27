@@ -1,0 +1,16 @@
+---
+name: Fallback
+---
+
+import { FallbackErrorBoundary } from "../src/index";
+import { Playground } from 'docz'
+
+# Fallback Error Boundary
+
+<Playground>
+  <FallbackErrorBoundary>
+    <button onClick={() => {
+      throw new Error('Something going Wrong!');
+    }}>Trigger Error</button>
+  </FallbackErrorBoundary>
+</Playground>
