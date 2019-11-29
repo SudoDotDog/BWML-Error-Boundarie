@@ -6,14 +6,14 @@
 
 import * as React from "react";
 
-export type MockBugComponentStates = {
+export type SimpleMockBugComponentStates = {
 
     readonly counter: number;
 };
 
-export class MockBugComponent extends React.Component<{}, MockBugComponentStates> {
+export class SimpleMockBugComponent extends React.Component<{}, SimpleMockBugComponentStates> {
 
-    public readonly state: MockBugComponentStates = {
+    public readonly state: SimpleMockBugComponentStates = {
 
         counter: 0,
     };

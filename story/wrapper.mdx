@@ -3,7 +3,7 @@ name: Wrapper Error Boundary
 ---
 
 import { WrapperErrorBoundary } from "../src/index";
-import { MockBugComponent } from "./mock"
+import { SimpleMockBugComponent } from "./mock/simple"
 import { Playground } from 'docz'
 
 # Wrapper Error Boundary
@@ -14,7 +14,7 @@ import { Playground } from 'docz'
   <WrapperErrorBoundary
     fallback={<div>Caught!</div>}
   >
-    <MockBugComponent />
+    <SimpleMockBugComponent />
   </WrapperErrorBoundary>
 </Playground>
 
@@ -24,6 +24,6 @@ import { Playground } from 'docz'
   <WrapperErrorBoundary
     fallbackComponent={() => <div>Caught!</div>}
   >
-    <MockBugComponent />
+    <SimpleMockBugComponent />
   </WrapperErrorBoundary>
 </Playground>
