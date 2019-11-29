@@ -3,7 +3,7 @@ name: Function Error Boundary
 ---
 
 import { FunctionErrorBoundary } from "../src/index";
-import { SimpleMockBugComponent } from "./mock/simple"
+import { TriggerableMockBugComponent } from "./mock/triggerable"
 import { Playground } from 'docz'
 
 # Function Error Boundary
@@ -14,7 +14,7 @@ import { Playground } from 'docz'
   <FunctionErrorBoundary
     fallback={<div>Caught!</div>}
   >
-    {(props) => <SimpleMockBugComponent {...props} />}
+    {(props) => <TriggerableMockBugComponent {...props} />}
   </FunctionErrorBoundary>
 </Playground>
 
@@ -24,6 +24,6 @@ import { Playground } from 'docz'
   <FunctionErrorBoundary
     fallbackComponent={() => <div>Caught!</div>}
   >
-    {(props) => <SimpleMockBugComponent {...props} />}
+    {(props) => <TriggerableMockBugComponent {...props} />}
   </FunctionErrorBoundary>
 </Playground>
