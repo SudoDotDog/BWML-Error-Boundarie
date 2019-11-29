@@ -1,42 +1,50 @@
 /**
  * @author WMXPY
  * @namespace Boundary
- * @description Wrapper Error Boundary
+ * @description Function Error Boundary
  */
 
 import * as React from "react";
 import { FallbackComponent, FallbackComponentProps } from "./common";
 
-export type WrapperErrorBoundaryProps = {
+export type FunctionErrorBoundaryChildrenProps = {
+
+    readonly emitError: (error: Error) => void;
+};
+
+export type FunctionErrorBoundaryProps = {
 
     readonly fallbackComponent?: FallbackComponent;
     readonly fallback?: React.ReactNode;
     readonly print?: boolean;
+
+    readonly children: (props: FunctionErrorBoundaryChildrenProps) => React.ReactNode;
 };
 
-export type WrapperErrorBoundaryStates = {
+export type FunctionErrorBoundaryStates = {
 
     readonly error: Error | null;
 };
 
-export class WrapperErrorBoundary extends React.Component<WrapperErrorBoundaryProps, WrapperErrorBoundaryStates> {
+export class FunctionErrorBoundary extends React.Component<FunctionErrorBoundaryProps, FunctionErrorBoundaryStates> {
 
-    public static getDerivedStateFromError(error: Error): WrapperErrorBoundaryStates {
+    public static getDerivedStateFromError(error: Error): FunctionErrorBoundaryStates {
 
         return {
             error,
         };
     }
 
-    public readonly state: WrapperErrorBoundaryStates = {
+    public readonly state: FunctionErrorBoundaryStates = {
 
         error: null,
     };
 
-    public constructor(props: WrapperErrorBoundaryProps) {
+    public constructor(props: FunctionErrorBoundaryProps) {
 
         super(props);
 
+        this._emitError = this._emitError.bind(this);
         this._recoverError = this._recoverError.bind(this);
     }
 
@@ -51,7 +59,9 @@ export class WrapperErrorBoundary extends React.Component<WrapperErrorBoundaryPr
 
         if (!this.state.error) {
 
-            return this.props.children;
+            return this.props.children({
+                emitError: this._emitError,
+            });
         }
 
         return this._getFallback();
@@ -74,6 +84,13 @@ export class WrapperErrorBoundary extends React.Component<WrapperErrorBoundaryPr
         }
 
         return null;
+    }
+
+    private _emitError(error: Error) {
+
+        this.setState({
+            error,
+        });
     }
 
     private _recoverError() {
