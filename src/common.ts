@@ -12,4 +12,11 @@ export type FallbackComponentProps = {
     readonly recover?: () => void;
 };
 
+export type CommonErrorBoundaryComponentProps = {
+
+    readonly fallbackComponent?: FallbackComponent;
+    readonly fallback?: React.ReactNode;
+    readonly print?: boolean;
+};
+
 export type FallbackComponent = React.ComponentType<FallbackComponentProps>;

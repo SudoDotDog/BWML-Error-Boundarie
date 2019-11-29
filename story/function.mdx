@@ -27,3 +27,11 @@ import { Playground } from 'docz'
     {(props) => <TriggerableMockBugComponent {...props} />}
   </FunctionErrorBoundary>
 </Playground>
+
+## Empty Children
+
+<Playground>
+  <FunctionErrorBoundary
+    fallbackComponent={() => <div>Caught!</div>}
+  />
+</Playground>

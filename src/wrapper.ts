@@ -5,14 +5,9 @@
  */
 
 import * as React from "react";
-import { FallbackComponent, FallbackComponentProps } from "./common";
+import { CommonErrorBoundaryComponentProps, FallbackComponentProps } from "./common";
 
-export type WrapperErrorBoundaryProps = {
-
-    readonly fallbackComponent?: FallbackComponent;
-    readonly fallback?: React.ReactNode;
-    readonly print?: boolean;
-};
+export type WrapperErrorBoundaryProps = CommonErrorBoundaryComponentProps;
 
 export type WrapperErrorBoundaryStates = {
 
@@ -51,7 +46,12 @@ export class WrapperErrorBoundary extends React.Component<WrapperErrorBoundaryPr
 
         if (!this.state.error) {
 
-            return this.props.children;
+            if (this.props.children) {
+
+                return this.props.children;
+            }
+
+            return null;
         }
 
         return this._getFallback();

@@ -27,3 +27,12 @@ import { Playground } from 'docz'
     <TriggerableMockBugComponent />
   </SingletonErrorBoundary>
 </Playground>
+
+## Empty Children
+
+<Playground>
+  <SingletonErrorBoundary
+    fallbackComponent={() => <div>Caught!</div>}
+  />
+</Playground>
+

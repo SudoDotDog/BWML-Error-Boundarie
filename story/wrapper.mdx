@@ -27,3 +27,11 @@ import { Playground } from 'docz'
     <SimpleMockBugComponent />
   </WrapperErrorBoundary>
 </Playground>
+
+## Empty Children
+
+<Playground>
+  <WrapperErrorBoundary
+    fallbackComponent={() => <div>Caught!</div>}
+  />
+</Playground>

@@ -5,17 +5,13 @@
  */
 
 import * as React from "react";
-import { FallbackComponent, FallbackComponentProps } from "./common";
+import { CommonErrorBoundaryComponentProps, FallbackComponentProps } from "./common";
 
 export type SingletonErrorBoundaryProps<T = any> = {
 
-    readonly fallbackComponent?: FallbackComponent;
-    readonly fallback?: React.ReactNode;
-    readonly print?: boolean;
-
-    readonly children: React.ComponentType<T>;
-    readonly childrenProps: T;
-};
+    readonly children?: React.ComponentType<T>;
+    readonly childrenProps?: T;
+} & CommonErrorBoundaryComponentProps;
 
 export type SingletonErrorBoundaryStates = {
 
@@ -55,11 +51,16 @@ export class SingletonErrorBoundary extends React.Component<SingletonErrorBounda
 
         if (!this.state.error) {
 
-            const children: React.ReactElement = React.Children.only(this.props.children) as React.ReactElement;
-            return React.cloneElement(children, {
-                ...this.props.childrenProps,
-                emitError: this._emitError,
-            });
+            if (this.props.children) {
+
+                const children: React.ReactElement = React.Children.only(this.props.children) as React.ReactElement;
+                return React.cloneElement(children, {
+                    ...this.props.childrenProps,
+                    emitError: this._emitError,
+                });
+            }
+
+            return null;
         }
 
         return this._getFallback();

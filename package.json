@@ -1,6 +1,6 @@
 {
   "name": "@bwnl/error-boundary",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": ":wave: Error Boundary Wrap",
   "main": "index.js",
   "directories": {

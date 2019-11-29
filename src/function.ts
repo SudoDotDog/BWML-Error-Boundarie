@@ -5,7 +5,7 @@
  */
 
 import * as React from "react";
-import { FallbackComponent, FallbackComponentProps } from "./common";
+import { CommonErrorBoundaryComponentProps, FallbackComponentProps } from "./common";
 
 export type FunctionErrorBoundaryChildrenProps = {
 
@@ -14,12 +14,8 @@ export type FunctionErrorBoundaryChildrenProps = {
 
 export type FunctionErrorBoundaryProps = {
 
-    readonly fallbackComponent?: FallbackComponent;
-    readonly fallback?: React.ReactNode;
-    readonly print?: boolean;
-
-    readonly children: (props: FunctionErrorBoundaryChildrenProps) => React.ReactNode;
-};
+    readonly children?: (props: FunctionErrorBoundaryChildrenProps) => React.ReactNode;
+} & CommonErrorBoundaryComponentProps;
 
 export type FunctionErrorBoundaryStates = {
 
@@ -59,9 +55,14 @@ export class FunctionErrorBoundary extends React.Component<FunctionErrorBoundary
 
         if (!this.state.error) {
 
-            return this.props.children({
-                emitError: this._emitError,
-            });
+            if (typeof this.props.children === 'function') {
+
+                return this.props.children({
+                    emitError: this._emitError,
+                });
+            }
+
+            return null;
         }
 
         return this._getFallback();
