@@ -1,0 +1,29 @@
+---
+name: Function Error Boundary
+---
+
+import { FunctionErrorBoundary } from "../src/index";
+import { MockBugComponent } from "./mock"
+import { Playground } from 'docz'
+
+# Function Error Boundary
+
+## Fallback React Node
+
+<Playground>
+  <FunctionErrorBoundary
+    fallback={<div>Caught!</div>}
+  >
+    {(props) => <MockBugComponent {...props} />}
+  </FunctionErrorBoundary>
+</Playground>
+
+## Fallback React Component
+
+<Playground>
+  <FunctionErrorBoundary
+    fallbackComponent={() => <div>Caught!</div>}
+  >
+    {(props) => <MockBugComponent {...props} />}
+  </FunctionErrorBoundary>
+</Playground>
