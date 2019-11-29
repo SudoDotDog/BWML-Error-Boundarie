@@ -7,33 +7,33 @@
 import * as React from "react";
 import { FallbackComponent, FallbackComponentProps } from "./common";
 
-export type FallbackErrorBoundaryProps = {
+export type WrapperErrorBoundaryProps = {
 
     readonly fallbackComponent?: FallbackComponent;
     readonly fallback?: React.ReactNode;
     readonly print?: boolean;
 };
 
-export type FallbackErrorBoundaryStates = {
+export type WrapperErrorBoundaryStates = {
 
     readonly error: Error | null;
 };
 
-export class FallbackErrorBoundary extends React.Component<FallbackErrorBoundaryProps, FallbackErrorBoundaryStates> {
+export class WrapperErrorBoundary extends React.Component<WrapperErrorBoundaryProps, WrapperErrorBoundaryStates> {
 
-    public static getDerivedStateFromError(error: Error): FallbackErrorBoundaryStates {
+    public static getDerivedStateFromError(error: Error): WrapperErrorBoundaryStates {
 
         return {
             error,
         };
     }
 
-    public readonly state: FallbackErrorBoundaryStates = {
+    public readonly state: WrapperErrorBoundaryStates = {
 
         error: null,
     };
 
-    public constructor(props: FallbackErrorBoundaryProps) {
+    public constructor(props: WrapperErrorBoundaryProps) {
 
         super(props);
 

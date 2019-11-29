@@ -1,29 +1,29 @@
 ---
-name: Fallback
+name: Wrapper
 ---
 
-import { FallbackErrorBoundary } from "../src/index";
+import { WrapperErrorBoundary } from "../src/index";
 import { MockBugComponent } from "./mock"
 import { Playground } from 'docz'
 
-# Fallback Error Boundary
+# Wrapper Error Boundary
 
 ## Fallback React Node
 
 <Playground>
-  <FallbackErrorBoundary
+  <WrapperErrorBoundary
     fallback={<div>Caught!</div>}
   >
     <MockBugComponent />
-  </FallbackErrorBoundary>
+  </WrapperErrorBoundary>
 </Playground>
 
 ## Fallback React Component
 
 <Playground>
-  <FallbackErrorBoundary
+  <WrapperErrorBoundary
     fallbackComponent={() => <div>Caught!</div>}
   >
     <MockBugComponent />
-  </FallbackErrorBoundary>
+  </WrapperErrorBoundary>
 </Playground>

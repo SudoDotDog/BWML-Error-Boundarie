@@ -5,5 +5,5 @@
  */
 
 export * from "./common";
-export * from "./fallback";
+export * from "./wrapper";
 
