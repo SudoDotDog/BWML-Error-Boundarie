@@ -33,9 +33,10 @@ export class MockBugComponent extends React.Component<{}, MockBugComponentStates
             throw new Error('Something went Wrong!');
         }
 
+        const text: string = `Click Here ${this.state.counter}/5 Times to Trigger Error`;
         return React.createElement('h1', {
             onClick: this._handleClick,
-        }, this.state.counter);
+        }, text);
     }
 
     private _handleClick() {
