@@ -1,11 +1,11 @@
 /**
  * @author WMXPY
- * @namespace Horizon
+ * @namespace Boundary
  * @description DOCZ_RC
  */
 
 export default {
-    title: 'BWNL Loading',
+    title: 'BWNL Error Boundary',
     codeSandbox: false,
     typescript: true,
 }
