@@ -1,0 +1,29 @@
+---
+name: Singleton Error Boundary
+---
+
+import { SingletonErrorBoundary } from "../src/index";
+import { TriggerableMockBugComponent } from "./mock/triggerable"
+import { Playground } from 'docz'
+
+# Singleton Error Boundary
+
+## Fallback React Node
+
+<Playground>
+  <SingletonErrorBoundary
+    fallback={<div>Caught!</div>}
+  >
+    <TriggerableMockBugComponent />
+  </SingletonErrorBoundary>
+</Playground>
+
+## Fallback React Component
+
+<Playground>
+  <SingletonErrorBoundary
+    fallbackComponent={() => <div>Caught!</div>}
+  >
+    <TriggerableMockBugComponent />
+  </SingletonErrorBoundary>
+</Playground>
